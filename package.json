@@ -1,0 +1,22 @@
+{
+  "name": "the-universal-core",
+  "version": "0.1.0",
+  "description": "An universal remote for applications",
+  "private": true,  
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TheUniversal/the-universal-core.git"
+  },
+  "keywords": [
+    "universal",
+    "remote",
+    "playback",
+    "player"
+  ],
+  "author": "Matias Klemola",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TheUniversal/the-universal-core/issues"
+  },
+  "homepage": "https://github.com/TheUniversal/the-universal-core"
+}
