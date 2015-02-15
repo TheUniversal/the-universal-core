@@ -20,7 +20,9 @@
   },
   "homepage": "https://github.com/TheUniversal/the-universal-core",
   "dependencies": {
-    "socket.io": "1.3.2"
+    "ramda": "0.10.0",
+    "socket.io": "1.3.2",
+    "the-universal-common": "0.1.1"
   },
   "scripts": {
     "start": "node src/main.js"
