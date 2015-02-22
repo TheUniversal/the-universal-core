@@ -1,7 +1,8 @@
 'use strict';
 
 var io = require('socket.io')();
-var Command = require('./playback/command')(io);
+var Command = require('./Command');
+var command = Command(io);
 var PORT = 3000;
 
 io.on('connection', function(socket){
@@ -11,7 +12,7 @@ io.on('connection', function(socket){
         console.log('Client disconnected', socket.id);
     });
 
-    socket.on('playback', Command.send);
+    socket.on('playback', command.updatePlaybackState);
 });
 
 io.listen(PORT);
