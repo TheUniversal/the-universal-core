@@ -2,7 +2,7 @@
 
 var commands = require('the-universal-common/command/Commands');
 
-module.exports = function MockPlayerModule(websocketServer) {
+module.exports = function MockPlayerModule(response) {
 
     return {
 
@@ -13,7 +13,7 @@ module.exports = function MockPlayerModule(websocketServer) {
         ],
 
         onPlaybackCommand: function (command) {
-            websocketServer.emit('playback', command)
+            response('playback', command)
         }
 
     }
