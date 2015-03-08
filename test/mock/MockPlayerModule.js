@@ -2,7 +2,7 @@
 
 var commands = require('the-universal-common/command/Commands');
 
-module.exports = function MockPlayerModule(response) {
+module.exports = function MockPlayerModule(playerEventDispatcher) {
 
     return {
 
@@ -13,7 +13,11 @@ module.exports = function MockPlayerModule(response) {
         ],
 
         onPlaybackCommand: function (command) {
-            response('playback', command)
+            playerEventDispatcher.onPlaybackEvent(command);
+        },
+
+        onVolumeChange: function (command) {
+            playerEventDispatcher.onVolumeChange(command);
         }
 
     }

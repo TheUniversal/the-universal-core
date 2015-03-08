@@ -1,17 +1,19 @@
 'use strict';
 
-var PlayerModule = require('../test/mock/MockPlayerModule');
 
-module.exports = function Command(websocketServer) {
-    var player = PlayerModule(function (topic, message) {
-        websocketServer.emit(topic, message);
-    });
+module.exports = function Command(player) {
 
     return {
 
         updatePlaybackState: function (command) {
-            console.log('Command: ', command);
+            console.log('Playback: ', command);
             player.onPlaybackCommand(command);
+        },
+
+        updateVolumeLevel: function (command) {
+            console.log('Volume change: ', command);
+            player.onVolumeChange(command);
         }
+
     }
 };

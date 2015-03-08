@@ -2,8 +2,13 @@
 
 var io = require('socket.io')();
 var Command = require('./Command');
-var command = Command(io);
+var PlayerModule = require('../test/mock/MockPlayerModule');
+var PlayerEventDispatcher = require('./PlayerEventDispatcher');
 var PORT = 3000;
+
+var playerEventDispatcher = PlayerEventDispatcher(io);
+var player = PlayerModule(playerEventDispatcher);
+var command = Command(player);
 
 io.on('connection', function(socket){
     console.log('Client connected', socket.id);
