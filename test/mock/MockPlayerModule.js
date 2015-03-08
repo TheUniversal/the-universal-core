@@ -6,6 +6,8 @@ module.exports = function MockPlayerModule(playerEventDispatcher) {
 
     return {
 
+        name: 'Mock player',
+
         supportedCommands: [
             commands.PLAYBACK.PLAY,
             commands.PLAYBACK.PAUSE,

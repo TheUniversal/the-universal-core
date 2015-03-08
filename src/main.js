@@ -18,6 +18,7 @@ io.on('connection', function(socket){
     });
 
     socket.on('playback', command.updatePlaybackState);
+    socket.emit('player', player.name);
 });
 
 io.listen(PORT);
