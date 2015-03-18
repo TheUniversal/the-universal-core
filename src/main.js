@@ -18,7 +18,10 @@ io.on('connection', function(socket){
     });
 
     socket.on('playback', command.updatePlaybackState);
-    socket.emit('player', player.name);
+    socket.emit('player', {
+        name: player.name,
+        supportedCommands: player.supportedCommands
+    });
 });
 
 io.listen(PORT);
