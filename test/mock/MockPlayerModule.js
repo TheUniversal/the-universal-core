@@ -20,7 +20,11 @@ module.exports = function MockPlayerModule(playerEventDispatcher) {
 
         onVolumeChange: function (command) {
             playerEventDispatcher.onVolumeChange(command);
-        }
+        },
+
+        onActivateModule: function(){},
+
+        onDeactivateModule: function(){}
 
     }
 };

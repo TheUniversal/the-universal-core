@@ -6,7 +6,8 @@ var PlayerModule = require('../test/mock/MockPlayerModule');
 var Player = require('./Player');
 
 var PORT = 3000;
-var player = Player(PlayerEventDispatcher(io));
+var dispatcher = PlayerEventDispatcher(io);
+var player = Player();
 
 io.on('connection', function(socket){
     console.log('Client connected', socket.id);
@@ -20,6 +21,6 @@ io.on('connection', function(socket){
     socket.on('volume', player.updateVolumeLevel);
 });
 
-player.activate(PlayerModule);
+player.load(PlayerModule(dispatcher));
 io.listen(PORT);
 console.info('Socket.io server listening on port ' + PORT);

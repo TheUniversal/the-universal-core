@@ -10,6 +10,11 @@ module.exports = function PlayerEventDispatcher(websocketServer) {
 
         onVolumeChangeEvent: function (command) {
             websocketServer.emit('volume', command);
+        },
+
+        onError: function(error){
+            console.log("Error in player module");
+            websocketServer.emit('error', error);
         }
 
     }

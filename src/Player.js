@@ -2,13 +2,20 @@
 
 var player;
 
-module.exports = function Player(playerEventDispatcher) {
+module.exports = function Player() {
 
     return {
 
-        activate: function (playerModule) {
-            console.log('Activated player module: ', playerModule.name);
-            player = playerModule(playerEventDispatcher);
+        load: function (playerModule) {
+            console.log('Loaded player module: ', playerModule.name);
+            player = playerModule;
+            player.onActivateModule();
+        },
+
+        unload: function(){
+            console.log('Deactivating player module: ', player.name);
+            player.onDeactivateModule();
+            player = null;
         },
 
         info: function () {
