@@ -4,12 +4,12 @@ module.exports = function PlayerEventDispatcher(websocketServer) {
 
     return {
 
-        onPlaybackEvent: function (command) {
-            websocketServer.emit('playback', command);
+        onPlaybackEvent: function (playbackStatus) {
+            websocketServer.emit('playback', playbackStatus);
         },
 
-        onVolumeChangeEvent: function (command) {
-            websocketServer.emit('volume', command);
+        onVolumeChangeEvent: function (volume) {
+            websocketServer.emit('volume', volume);
         },
 
         onActivateModule: function(moduleInfo){
