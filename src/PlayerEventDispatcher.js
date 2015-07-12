@@ -12,8 +12,8 @@ module.exports = function PlayerEventDispatcher(websocketServer) {
             websocketServer.emit('volume', command);
         },
 
-        onActivateModule: function(playerInfo){
-            websocketServer.emit('player', playerInfo);
+        onActivateModule: function(moduleInfo){
+            websocketServer.emit('player', moduleInfo);
         },
 
         onError: function(error){

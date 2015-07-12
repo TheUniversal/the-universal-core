@@ -10,7 +10,7 @@ var moduleService = ModuleService(dispatcher);
 
 io.on('connection', function(socket){
     console.log('Client connected', socket.id);
-    socket.emit('player', moduleService.getPlayerInfo());
+    socket.emit('module', moduleService.getModuleInfo());
 
     socket.on('disconnect', function(){
         console.log('Client disconnected', socket.id);
@@ -22,5 +22,5 @@ io.on('connection', function(socket){
 
 io.listen(PORT);
 console.info('Socket.io server listening on port ' + PORT);
-moduleService.loadModule('mockPlayer');
+moduleService.loadModule('foobar2000');
 
