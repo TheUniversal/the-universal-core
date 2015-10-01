@@ -1,21 +1,20 @@
 'use strict';
 
-var io = require('socket.io')();
-var PlayerEventDispatcher = require('./PlayerEventDispatcher');
-var ModuleService = require('the-universal-modules/ModuleService');
+import sio from 'socket.io';
+import PlayerEventDispatcher from './PlayerEventDispatcher';
+import ModuleService from 'the-universal-modules/ModuleService';
 
-var PORT = 3000;
-var dispatcher = PlayerEventDispatcher(io);
-var moduleService = ModuleService(dispatcher);
+const PORT = 3000;
+
+let io = sio();
+let dispatcher = new PlayerEventDispatcher(io);
+let moduleService = new ModuleService(dispatcher);
 
 io.on('connection', function(socket){
     console.log('Client connected', socket.id);
     socket.emit('player', moduleService.getModuleInfo());
 
-    socket.on('disconnect', function(){
-        console.log('Client disconnected', socket.id);
-    });
-
+    socket.on('disconnect', () => console.log('Client disconnected', socket.id));
     socket.on('playback', moduleService.updatePlaybackState);
     socket.on('volume', moduleService.updateVolumeLevel);
 });

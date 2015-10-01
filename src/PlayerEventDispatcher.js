@@ -1,25 +1,25 @@
 'use strict';
 
-module.exports = function PlayerEventDispatcher(websocketServer) {
+export default class PlayerEventDispatcher {
 
-    return {
-
-        onPlaybackEvent: function (playbackStatus) {
-            websocketServer.emit('playback', playbackStatus);
-        },
-
-        onVolumeChangeEvent: function (volume) {
-            websocketServer.emit('volume', volume);
-        },
-
-        onActivateModule: function(moduleInfo){
-            websocketServer.emit('player', moduleInfo);
-        },
-
-        onError: function(error){
-            console.log("Error in player module");
-            websocketServer.emit('error', error);
-        }
-
+    constructor(websocketServer) {
+        this.websocketServer = websocketServer;
     }
-};
+
+    onPlaybackEvent(playbackStatus) {
+        this.websocketServer.emit('playback', playbackStatus);
+    }
+
+    onVolumeChangeEvent(volume) {
+        this.websocketServer.emit('volume', volume);
+    }
+
+    onActivateModule(moduleInfo){
+        this.websocketServer.emit('player', moduleInfo);
+    }
+
+    onError(error){
+        console.log("Error in player module");
+        this.websocketServer.emit('error', error);
+    }
+}
